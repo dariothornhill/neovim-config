@@ -25,6 +25,9 @@ if not status then
 end
 
 return packer.startup(function(use)
+	-- start screen
+	use("mhinz/vim-startify")
+
 	-- plug in manager
 	use("wbthomason/packer.nvim")
 
@@ -36,6 +39,16 @@ return packer.startup(function(use)
 
 	-- tmux & split window navigation
 	use("christoomey/vim-tmux-navigator")
+	use("aserowy/tmux.nvim") -- may not need this
+
+	-- nvim terminal emulator
+	use({
+		"akinsho/toggleterm.nvim",
+		tag = "*",
+		config = function()
+			require("toggleterm").setup()
+		end,
+	})
 
 	-- maximizes & restores current window
 	use("szw/vim-maximizer")
@@ -108,10 +121,34 @@ return packer.startup(function(use)
 	-- harpoon
 	use({
 		"ThePrimeagen/harpoon",
-		run = function()
-			local test = require("nvim-lua/plenary.nvim")
-			test()
-		end,
+		requires = {
+			"nvim-lua/plenary.nvim",
+		},
+	})
+
+	-- undo tree
+	use("mbbill/undotree")
+
+	-- flutter tools
+	use({
+		"akinsho/flutter-tools.nvim",
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"stevearc/dressing.nvim", -- optional for vim.ui.select
+		},
+	})
+
+	-- todo
+	use({
+		"folke/todo-comments.nvim",
+		requires = {
+			"nvim-lua/plenary.nvim",
+		},
+		opts = {
+			-- your configuration comes here
+			-- or leave it empty to use the default settings
+			-- refer to the configuration section below
+		},
 	})
 
 	-- Automatically set up your configuration after cloning packer.nvim

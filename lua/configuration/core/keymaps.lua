@@ -30,8 +30,28 @@ keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>")
 keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
 
 -- telescope
-keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>")
-keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>")
-keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>")
-keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>")
-keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>")
+keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>") -- find files within current working directory, respects .gitignore
+keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>") -- find string in current working directory as you type
+keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>") -- find string under cursor in current working directory
+keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>") -- list open buffers in current neovim instance
+keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available help tags
+
+-- telescope git commands (not on youtube nvim video)
+keymap.set("n", "<leader>gc", "<cmd>Telescope git_commits<cr>") -- list all git commits (use <cr> to checkout) ["gc" for git commits]
+keymap.set("n", "<leader>gfc", "<cmd>Telescope git_bcommits<cr>") -- list git commits for current file/buffer (use <cr> to checkout) ["gfc" for git file commits]
+keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>") -- list git branches (use <cr> to checkout) ["gb" for git branch]
+keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list current changes per file with diff preview ["gs" for git status]
+
+-- restart lsp server (not on youtube nvim video)
+keymap.set("n", "<leader>rs", ":LspRestart<CR>") -- mapping to restart lsp if necessary
+
+-- code navigation
+keymap.set("n", "<leader>gd", "<cmd>lua vim.lsp.buf.declaration()<cr>")
+keymap.set("n", "<leader>gD", "<cmd>lua vim.lsp.buf.definition()<cr>")
+keymap.set("n", "<leader>td", "<cmd>lua vim.lsp.buf.type_definition()<cr>")
+keymap.set("n", "<leader>gi", "<cmd>lua vim.lsp.buf.implementation()<cr>")
+keymap.set("n", "<leader>si", "<cmd>lua require'jdtls'.super_implementation()<cr>")
+keymap.set("n", "<leader>gr", "<cmd>lua vim.lsp.buf.references()<cr>")
+
+-- reformat
+keymap.set("n", "<leader>rf", "<cmd>lua vim.lsp.buf.format { async = true }<cr>")
