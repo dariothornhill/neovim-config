@@ -36,13 +36,13 @@ keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>") -- find string u
 keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>") -- list open buffers in current neovim instance
 keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available help tags
 
--- telescope git commands (not on youtube nvim video)
+-- telescope git commands
 keymap.set("n", "<leader>gc", "<cmd>Telescope git_commits<cr>") -- list all git commits (use <cr> to checkout) ["gc" for git commits]
 keymap.set("n", "<leader>gfc", "<cmd>Telescope git_bcommits<cr>") -- list git commits for current file/buffer (use <cr> to checkout) ["gfc" for git file commits]
 keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>") -- list git branches (use <cr> to checkout) ["gb" for git branch]
 keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list current changes per file with diff preview ["gs" for git status]
 
--- restart lsp server (not on youtube nvim video)
+-- restart lsp server
 keymap.set("n", "<leader>rs", ":LspRestart<CR>") -- mapping to restart lsp if necessary
 
 -- code navigation
@@ -55,3 +55,51 @@ keymap.set("n", "<leader>gr", "<cmd>lua vim.lsp.buf.references()<cr>")
 
 -- reformat
 keymap.set("n", "<leader>rf", "<cmd>lua vim.lsp.buf.format { async = true }<cr>")
+keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<cr>")
+keymap.set("n", "<leader>re", "<cmd>Lspsaga code_action<cr>")
+
+-- dap
+keymap.set("n", "<F5>", function()
+	require("dap").continue()
+end)
+keymap.set("n", "<F10>", function()
+	require("dap").step_over()
+end)
+keymap.set("n", "<F11>", function()
+	require("dap").step_into()
+end)
+keymap.set("n", "<F12>", function()
+	require("dap").step_out()
+end)
+keymap.set("n", "<Leader>b", function()
+	require("dap").toggle_breakpoint()
+end)
+keymap.set("n", "<Leader>B", function()
+	require("dap").set_breakpoint()
+end)
+keymap.set("n", "<Leader>lp", function()
+	require("dap").set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
+end)
+keymap.set("n", "<Leader>dr", function()
+	require("dap").repl.open()
+end)
+keymap.set("n", "<Leader>dl", function()
+	require("dap").run_last()
+end)
+keymap.set({ "n", "v" }, "<Leader>dh", function()
+	require("dap.ui.widgets").hover()
+end)
+keymap.set({ "n", "v" }, "<Leader>dp", function()
+	require("dap.ui.widgets").preview()
+end)
+keymap.set("n", "<Leader>df", function()
+	local widgets = require("dap.ui.widgets")
+	widgets.centered_float(widgets.frames)
+end)
+keymap.set("n", "<Leader>ds", function()
+	local widgets = require("dap.ui.widgets")
+	widgets.centered_float(widgets.scopes)
+end)
+
+keymap.set("n", "<leader>da", "<cmd>lua require'dapui'.toggle()<cr>")
+keymap.set("n", "<leader>jj", "<cmd>lua require'dap'.continue()<cr>")

@@ -46,6 +46,7 @@ local function set_hover_border(client)
 end
 
 M.on_attach = function(client, bufnr)
+	print("something attached lol")
 	set_document_higlighting(client)
 	set_signature_helper(client, bufnr)
 	set_hover_border(client)

@@ -53,7 +53,7 @@ local on_attach = function(client, bufnr)
 end
 
 local jdtls_path = mason_registry.get_package("jdtls"):get_install_path()
-
+local lombok_path = mason_registry.get_package("jdtls"):get_install_path()
 local config = {
 	cmd = {
 		java_cmd,
@@ -64,6 +64,7 @@ local config = {
 		"-Dlog.level=ALL",
 		"-Xms512m",
 		"-Xmx2048m",
+		"-javaagent:" .. lombok_path .. "/lombok.jar",
 		"--add-modules=ALL-SYSTEM",
 		"--add-opens",
 		"java.base/java.util=ALL-UNNAMED",
@@ -110,6 +111,12 @@ local config = {
 					"org.mockito.Mockito.*",
 					"org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*",
 					"org.assertj.core.api.AssertionsForClassTypes.*",
+				},
+				importOrder = {
+					"java",
+					"javax",
+					"com",
+					"org",
 				},
 			},
 			sources = {
