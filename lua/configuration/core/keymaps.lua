@@ -18,6 +18,47 @@ local n_opts = {
 
 wk.register({
 
+	-- trouble
+	["<leader>x"] = {
+		name = "[Trouble]",
+		x = {
+			function()
+				require("trouble").open()
+			end,
+			"Open trouble window",
+		},
+		w = {
+			function()
+				require("trouble").open("workspace_diagnostics")
+			end,
+			"Workspace diagnostics",
+		},
+		q = {
+			function()
+				require("trouble").open("document_diagnostics")
+			end,
+			"Document diagnostics",
+		},
+		d = {
+			function()
+				require("trouble").open("quickfix")
+			end,
+			"Quick fix suggestions",
+		},
+		l = {
+			function()
+				require("trouble").open("loclist")
+			end,
+			"Loc List",
+		},
+		r = {
+			function()
+				require("trouble").open("lsp_references")
+			end,
+			"LSP references",
+		},
+	},
+
 	-- motions
 	["<leader>m"] = {
 		name = "[Motions]",

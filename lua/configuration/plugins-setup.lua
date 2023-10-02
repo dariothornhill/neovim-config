@@ -188,6 +188,9 @@ return packer.startup(function(use)
 		end,
 	})
 
+	-- helps with diagnostics and other features
+	use({ "folke/trouble.nvim", requires = { "nvim-tree/nvim-web-devicons" }, opts = {} })
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if packer_bootstrap then
