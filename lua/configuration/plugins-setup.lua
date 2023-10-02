@@ -31,11 +31,23 @@ return packer.startup(function(use)
 	-- plug in manager
 	use("wbthomason/packer.nvim")
 
+	-- buffer line
+	use({ "akinsho/bufferline.nvim", tag = "*", requires = { "nvim-tree/nvim-web-devicons", "famiu/bufdelete.nvim" } })
+
 	-- lua functions that many plugins use
 	use("nvim-lua/plenary.nvim")
 
 	-- color scheme
 	use("bluz71/vim-nightfly-guicolors")
+
+	-- hightlights word usage
+	use("RRethy/vim-illuminate")
+
+	-- hints as you type
+	use("ray-x/lsp_signature.nvim")
+
+	-- use extra motions
+	use("chrisgrieser/nvim-spider")
 
 	-- tmux & split window navigation
 	use("christoomey/vim-tmux-navigator")

@@ -10,6 +10,9 @@ vim.g.loaded_netrwPlugin = 1
 vim.cmd([[ highlight NvimTreeIndentMarker guifg=#3FC5FF ]])
 
 nvimtree.setup({
+	view = {
+		width = 50,
+	},
 
 	renderer = {
 		icons = {

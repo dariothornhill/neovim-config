@@ -54,6 +54,10 @@ end
 
 local jdtls_path = mason_registry.get_package("jdtls"):get_install_path()
 local lombok_path = mason_registry.get_package("jdtls"):get_install_path()
+
+local extendedClientCapabilities = jdtls.extendedClientCapabilities
+extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
+
 local config = {
 	cmd = {
 		java_cmd,
@@ -64,12 +68,12 @@ local config = {
 		"-Dlog.level=ALL",
 		"-Xms512m",
 		"-Xmx2048m",
-		"-javaagent:" .. lombok_path .. "/lombok.jar",
 		"--add-modules=ALL-SYSTEM",
 		"--add-opens",
 		"java.base/java.util=ALL-UNNAMED",
 		"--add-opens",
 		"java.base/java.lang=ALL-UNNAMED",
+		"-javaagent:" .. lombok_path .. "/lombok.jar",
 		"-jar",
 		jdtls_path .. "/plugins/org.eclipse.equinox.launcher_1.6.500.v20230717-2134.jar",
 		"-configuration",
@@ -88,6 +92,7 @@ local config = {
 	on_init = on_init,
 	init_options = {
 		bundles = bundles,
+		extendedClientCapabilities = extendedClientCapabilities,
 	},
 	capabilities = handlers.capabilities,
 	on_attach = on_attach,
@@ -129,6 +134,7 @@ local config = {
 				toString = {
 					template = "${object.className}{${member.name()}=${member.value}, ${otherMembers}}",
 				},
+				useBlocks = true,
 			},
 		},
 	},
