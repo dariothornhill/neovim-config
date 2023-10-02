@@ -191,6 +191,16 @@ return packer.startup(function(use)
 	-- helps with diagnostics and other features
 	use({ "folke/trouble.nvim", requires = { "nvim-tree/nvim-web-devicons" }, opts = {} })
 
+	-- twilight for dimming inactive portions of code
+	use({
+		"folke/twilight.nvim",
+		opts = {
+			-- your configuration comes here
+			-- or leave it empty to use the default settings
+			-- refer to the configuration section below
+		},
+	})
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if packer_bootstrap then

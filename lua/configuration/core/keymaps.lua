@@ -17,7 +17,6 @@ local n_opts = {
 }
 
 wk.register({
-
 	-- trouble
 	["<leader>x"] = {
 		name = "[Trouble]",
@@ -87,6 +86,7 @@ wk.register({
 		x = { ":tabclose<CR>", "Close current tab" }, -- close current tab
 		n = { ":tabn<CR>", "Go to next tab" }, -- go to next tab
 		p = { ":tabp<CR>", "Go to previous tab" }, -- go to previous tab
+		l = { ":Twilight<CR>", "Toggle twilight" },
 	},
 
 	-- telescope
