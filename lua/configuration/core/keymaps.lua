@@ -87,6 +87,7 @@ wk.register({
 		n = { ":tabn<CR>", "Go to next tab" }, -- go to next tab
 		p = { ":tabp<CR>", "Go to previous tab" }, -- go to previous tab
 		l = { ":Twilight<CR>", "Toggle twilight" },
+		tb = { ":TagbarToggle<CR>", "Toggle tag bar" },
 	},
 
 	-- telescope
@@ -117,6 +118,7 @@ wk.register({
 		i = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Go to implementation" },
 		s = { "<cmd>lua require'jdtls'.super_implementation()<CR>", "Go to super implementation" },
 		r = { "<cmd>lua vim.lsp.buf.references()<CR>", "Show references" },
+		a = { "<cmd>AerialToggle!<CR>", "Toggle aerial" },
 	},
 
 	-- reformat
@@ -185,8 +187,8 @@ wk.register({
 	},
 
 	-- debug
-	["<debug>d"] = {
-		name = "[DEBUG]",
+	["<leader>d"] = {
+		name = "[Debug]",
 		c = {
 			function()
 				require("dap").continue()
@@ -209,7 +211,7 @@ wk.register({
 			function()
 				require("dap").step_out()
 			end,
-			"",
+			"Step out of the code",
 		},
 		b = {
 			function()
@@ -227,45 +229,45 @@ wk.register({
 			function()
 				require("dap").set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
 			end,
-			"",
+			"Set break point with message",
 		},
 		r = {
 			function()
 				require("dap").repl.open()
 			end,
-			"",
+			"Repl open",
 		},
 		l = {
 			function()
 				require("dap").run_last()
 			end,
-			"",
+			"Run last",
 		},
 		h = {
 			function()
 				require("dap.ui.widgets").hover()
 			end,
-			"",
+			"Hover",
 		},
 		p = {
 			function()
 				require("dap.ui.widgets").preview()
 			end,
-			"",
+			"Preview",
 		},
 		f = {
 			function()
 				local widgets = require("dap.ui.widgets")
 				widgets.centered_float(widgets.frames)
 			end,
-			"",
+			"Frames",
 		},
 		s = {
 			function()
 				local widgets = require("dap.ui.widgets")
 				widgets.centered_float(widgets.scopes)
 			end,
-			"",
+			"Scopes",
 		},
 	},
 }, n_opts)

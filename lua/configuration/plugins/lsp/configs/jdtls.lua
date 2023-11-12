@@ -46,7 +46,7 @@ local on_attach = function(client, bufnr)
 		-- Auto-detect main and setup dap config
 		require("jdtls.dap").setup_dap_main_class_configs({
 			config_overrides = {
-				vmArgs = "-Dspring.profiles.active=local",
+				vmArgs = "-Dspring.profiles.active=dev",
 			},
 		})
 	end

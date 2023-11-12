@@ -37,6 +37,9 @@ return packer.startup(function(use)
 	-- lua functions that many plugins use
 	use("nvim-lua/plenary.nvim")
 
+	-- class outliner
+	use("preservim/tagbar")
+
 	-- color scheme
 	use("bluz71/vim-nightfly-guicolors")
 
@@ -62,6 +65,9 @@ return packer.startup(function(use)
 		end,
 	})
 
+	-- colorizer
+	use("norcalli/nvim-colorizer.lua")
+
 	-- maximizes & restores current window
 	use("szw/vim-maximizer")
 
@@ -81,6 +87,9 @@ return packer.startup(function(use)
 	-- lua line
 	use("nvim-lualine/lualine.nvim")
 
+	-- number toggle
+	use("sitiom/nvim-numbertoggle") -- Automatic switch to absolute line numbers when you are not in normal or visual mode, or focus is in other split
+
 	-- telescope fuzzy finder
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }) -- dependency to make telescope perform better
 	use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" })
@@ -94,6 +103,9 @@ return packer.startup(function(use)
 	use("L3MON4D3/LuaSnip")
 	use("saadparwaiz1/cmp_luasnip")
 	use("rafamadriz/friendly-snippets")
+
+	-- code navigation
+	use("stevearc/aerial.nvim")
 
 	-- managing & installing lsp servers, linters & formatters
 	-- lsp manager
