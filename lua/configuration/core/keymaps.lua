@@ -145,6 +145,14 @@ wk.register({
 		h = { "<cmd>Gitsigns preview_hunk<CR>", "[GIT] Preview hunk" },
 	},
 
+	-- comment generator
+	["<leader>n"] = {
+		name = "[Comment]",
+		f = { "<cmd>lua require('neogen').generate({ type = 'func' })<CR>", "Generate function comment" },
+		c = { "<cmd>lua require('neogen').generate({ type = 'class' })<CR>", "Generate class comment" },
+		t = { "<cmd>lua require('neogen').generate({ type = 'type' })<CR>", "Generate type comment" },
+	},
+
 	-- harpoon
 	["<leader>h"] = {
 		name = "[Harpoon]",
